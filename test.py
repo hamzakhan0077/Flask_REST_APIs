@@ -71,3 +71,9 @@ def clear_this_data():
 if __name__ == '__main__':
     test()  # run the script, see the requests in the FLASK Dev Server running on Commandline
     # clear_this_data()
+
+    #
+    # print("\n GET (GET DATA) \n")
+    # for i in range(4):
+    #     res2 = requests.get(BASE + f"customers/{i}")
+    #     print(res2.json())
