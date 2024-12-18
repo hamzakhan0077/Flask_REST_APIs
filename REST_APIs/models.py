@@ -3,7 +3,7 @@ Model = db.Model
 
 
 class Customer(Model):
-    id = db.Column(db.Integer,unique = True, nullable=False,primary_key = True,autoincrement=True)
+    id = db.Column(db.String(100),unique = True, nullable=False,primary_key = True)
     name = db.Column(db.String(100), nullable=False,default='')
     email = db.Column(db.String(100), nullable=False,default='')
     note = db.Column(db.String(100),nullable=False,default='')
