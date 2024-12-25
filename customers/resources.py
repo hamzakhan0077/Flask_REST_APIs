@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse, fields, marshal_with, abort
-from REST_APIs import api, db, app
-from REST_APIs.models import Customer
+from customers import api, db, app
+from customers.models import Customer
 import uuid
 import http
 

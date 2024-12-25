@@ -10,5 +10,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 api = Api(app)
 db = SQLAlchemy(app)
 
-from REST_APIs import routes
-from REST_APIs import resources
+from customers import routes
+from customers import resources
