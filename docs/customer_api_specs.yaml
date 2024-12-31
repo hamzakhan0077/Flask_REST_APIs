@@ -1,0 +1,137 @@
+openapi: 3.0.0
+info:
+  title: Customer API
+  description: Api that allows CRUD operations on customers.
+  version: V1alpha
+
+servers:
+  - url: http:localhost:5000
+    description: Runs locally or on a docker container
+  - url: http:localhost:5000
+paths:
+  /Customers:
+    get:
+      summary: Returns a list of Customers.
+      description: Returns a list of Customer Object with customer details.
+      responses:
+        "200": # status code
+          description: A JSON array of customer objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    put:
+      summary: Create a new Customers.
+      description: Returns a list of Customer Object with customer details.
+      responses:
+        "200": # status code
+          description: A JSON object of customer created. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerCreate'
+  /Customers/{id}:  
+    patch:
+      summary: Updates a Customer.
+      description: Returns the updated Customer Object with customer details.
+      operationId: updateCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to fetch
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: A JSON object of customer updated. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerUpdate'
+    delete:
+      summary: Delete a Customers.
+      description: Delete a customer entry in the DB
+      operationId: deleteCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to fetch
+          required: true
+          schema:
+            type: string
+      responses:
+          '400':
+            description: Invalid ID supplied
+          '404':
+            description: Customer not found
+    
+    get:
+      summary: Get a Customers.
+      description: Returns the Customer Object with customer details.
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to fetch
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": # status code
+          description: A JSON object of customer. 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+components:
+  schemas:
+   Customer:
+      properties:
+        id:
+          type: string
+          example: 0000000-0000-0000-0000-00000000000
+        name:
+          type: string
+          example: Bob
+        email:
+          type: string
+          example: bob@pp.org
+        note: 
+          type: string
+          example: This customer is due to receive a gift card
+   CustomerCreate:
+      properties:
+        name:
+          type: string
+          example: Bob
+        email:
+          type: string
+          example: bob@pp.org
+        note: 
+          type: string
+          example: This customer is due to receive a gift card
+          
+   CustomerUpdate:
+      properties:
+        name:
+          type: string
+          example: Bob
+        email:
+          type: string
+          example: bob@pp.org
+        note: 
+          type: string
+          example: This customer is due to receive a gift card

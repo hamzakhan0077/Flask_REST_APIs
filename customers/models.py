@@ -1,4 +1,4 @@
-from REST_APIs import db
+from customers import db
 Model = db.Model
 
 
